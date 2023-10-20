@@ -49,10 +49,18 @@ public class Main {
                 }
             } while (!gameOver);
 
-            System.out.print("Do you wish to play again? [Y/N]: ");
-            String response = in.nextLine();
-            if (response.equalsIgnoreCase("N"))
-                contGame = true;
+            boolean valid = false;
+            do {
+                System.out.print("Do you wish to play again? [Y/N]: ");
+                String response = in.nextLine();
+                if (response.equalsIgnoreCase("N")) {
+                    contGame = true;
+                    valid = true;
+                } else if (response.equalsIgnoreCase("Y"))
+                    valid = true;
+                else
+                    System.out.println("CRAPS: ERROR, invalid input of '" + response + "'");
+            } while (!valid);
         } while (!contGame);
     }
 }
